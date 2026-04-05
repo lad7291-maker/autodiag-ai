@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoDiag AI</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_bluetooth">OBD2</string>
+    <string name="nav_history">История</string>
+    <string name="nav_settings">Настройки</string>
+    
+    <!-- Home Screen -->
+    <string name="health_score_title">Состояние двигателя</string>
+    <string name="health_excellent">Отличное</string>
+    <string name="health_good">Хорошее</string>
+    <string name="health_attention">Требует внимания</string>
+    <string name="health_problems">Проблемы</string>
+    <string name="health_critical">Критическое</string>
+    <string name="no_issues">Проблем не обнаружено</string>
+    <string name="no_issues_desc">Двигатель работает в нормальном режиме</string>
+    <string name="detected_issues">Обнаруженные проблемы</string>
+    <string name="operating_tips">Рекомендации по эксплуатации</string>
+    <string name="quick_actions">Быстрые действия</string>
+    
+    <!-- Bluetooth Screen -->
+    <string name="obd_connection">OBD2 Подключение</string>
+    <string name="connected">Подключено</string>
+    <string name="not_connected">Не подключено</string>
+    <string name="select_device">Выберите устройство для подключения</string>
+    <string name="paired_devices">Сопряженные устройства</string>
+    <string name="no_devices">Устройства не найдены</string>
+    <string name="no_devices_desc">Убедитесь, что Bluetooth включен и OBD2 адаптер сопряжен</string>
+    <string name="live_data">Данные в реальном времени</string>
+    
+    <!-- Parameters -->
+    <string name="param_rpm">Обороты</string>
+    <string name="param_speed">Скорость</string>
+    <string name="param_coolant_temp">Температура ОЖ</string>
+    <string name="param_engine_load">Нагрузка</string>
+    <string name="param_throttle">Дроссель</string>
+    <string name="param_fuel_level">Уровень топлива</string>
+    <string name="param_intake_temp">Температура впуска</string>
+    <string name="param_intake_pressure">Давление впуска</string>
+    <string name="param_maf">Расход воздуха</string>
+    
+    <!-- DTC Codes -->
+    <string name="dtc_codes">Коды ошибок</string>
+    <string name="dtc_critical">Критическая</string>
+    <string name="dtc_high">Высокая</string>
+    <string name="dtc_medium">Средняя</string>
+    <string name="dtc_low">Низкая</string>
+    <string name="dtc_info">Информация</string>
+    
+    <!-- Categories -->
+    <string name="cat_engine">Двигатель</string>
+    <string name="cat_transmission">Трансмиссия</string>
+    <string name="cat_abs">ABS</string>
+    <string name="cat_airbag">Подушки безопасности</string>
+    <string name="cat_climate">Климат-контроль</string>
+    <string name="cat_electrical">Электрика</string>
+    <string name="cat_fuel">Топливная система</string>
+    <string name="cat_emissions">Выхлопная система</string>
+    <string name="cat_sensor">Датчики</string>
+    
+    <!-- Vehicle Brands -->
+    <string name="brand_vaz">ВАЗ/Лада</string>
+    <string name="brand_uaz">УАЗ</string>
+    <string name="brand_gaz">ГАЗ</string>
+    <string name="brand_kamaz">КамАЗ</string>
+    <string name="brand_paz">ПАЗ</string>
+    
+    <!-- Actions -->
+    <string name="action_diagnose">Диагностика</string>
+    <string name="action_parameters">Параметры</string>
+    <string name="action_consumption">Расход</string>
+    <string name="action_connect">Подключиться</string>
+    <string name="action_disconnect">Отключиться</string>
+    <string name="action_start">Старт</string>
+    <string name="action_stop">Стоп</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_clear">Очистить</string>
+    <string name="action_refresh">Обновить</string>
+    
+    <!-- Messages -->
+    <string name="msg_connecting">Подключение…</string>
+    <string name="msg_connected">Подключено</string>
+    <string name="msg_disconnected">Отключено</string>
+    <string name="msg_error">Ошибка</string>
+    <string name="msg_no_data">Нет данных</string>
+    <string name="msg_check_connection">Проверьте подключение</string>
+    
+    <!-- Errors -->
+    <string name="error_bluetooth_disabled">Bluetooth выключен</string>
+    <string name="error_no_adapter">Адаптер не найден</string>
+    <string name="error_connection_failed">Не удалось подключиться</string>
+    <string name="error_permission_denied">Разрешение отклонено</string>
+    
+    <!-- Settings -->
+    <string name="settings_appearance">Внешний вид</string>
+    <string name="settings_dark_theme">Темная тема</string>
+    <string name="settings_dark_theme_desc">Использовать темную тему оформления</string>
+    <string name="settings_notifications">Уведомления</string>
+    <string name="settings_notifications_desc">Получать уведомления о проблемах</string>
+    <string name="settings_obd2">OBD2</string>
+    <string name="settings_auto_connect">Автоподключение</string>
+    <string name="settings_auto_connect_desc">Автоматически подключаться к OBD2</string>
+    <string name="settings_interval">Интервал обновления</string>
+    <string name="settings_data">Данные</string>
+    <string name="settings_clear_data">Очистить все данные</string>
+    <string name="settings_clear_data_desc">Удалить историю и настройки</string>
+    <string name="settings_about">О приложении</string>
+    <string name="settings_version">Версия</string>
+    <string name="settings_database">База данных</string>
+    
+    <!-- AI Analysis -->
+    <string name="ai_analysis_title">AI Анализ</string>
+    <string name="ai_analysis_subtitle">Интеллектуальная диагностика</string>
+    <string name="ai_profile_economical">Экономичный</string>
+    <string name="ai_profile_dynamic">Динамичный</string>
+    <string name="ai_profile_highway">Трасса</string>
+    <string name="ai_profile_urban">Город</string>
+    <string name="ai_profile_balanced">Сбалансированный</string>
+    <string name="ai_recommendations">Рекомендации AI</string>
+    <string name="ai_safety_notes">Примечания безопасности</string>
+    <string name="ai_apply_settings">Применить настройки</string>
+    <string name="ai_reset_factory">Сбросить к заводским</string>
+    <string name="ai_collecting_data">Сбор данных…</string>
+    <string name="ai_analysis_complete">Анализ завершен</string>
+    <string name="ai_start_collection">Начать сбор</string>
+    <string name="ai_stop_collection">Остановить</string>
+    
+    <!-- Voice Alerts -->
+    <string name="alert_temperature">Температура</string>
+    <string name="alert_knock">Детонация</string>
+    <string name="alert_fuel_mixture">Топливная смесь</string>
+    <string name="alert_oil_pressure">Давление масла</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Добро пожаловать</string>
+    <string name="onboarding_desc_1">AutoDiag AI - интеллектуальный помощник для диагностики вашего автомобиля</string>
+    <string name="onboarding_title_2">OBD2 Диагностика</string>
+    <string name="onboarding_desc_2">Подключайтесь через Bluetooth и получайте полную информацию о состоянии двигателя</string>
+    <string name="onboarding_title_3">AI Анализ</string>
+    <string name="onboarding_desc_3">Искусственный интеллект анализирует стиль вождения и дает персональные рекомендации</string>
+    <string name="onboarding_title_4">Готовы начать?</string>
+    <string name="onboarding_desc_4">Выберите свой автомобиль и начните первую диагностику</string>
+    <string name="onboarding_skip">Пропустить</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_start">Начать</string>
+</resources>

@@ -1,0 +1,22 @@
+AutoDiagAI - your intelligent assistant for car diagnostics via OBD2.
+
+KEY FEATURES:
+• Read and clear diagnostic trouble codes (DTC)
+• Real-time engine parameter monitoring
+• AI-powered data analysis for problem detection
+• Diagnostic history with report export
+• Support for all standard OBD2 adapters (Bluetooth)
+• Predictive maintenance insights
+• Voice command support
+
+SECURITY & PRIVACY:
+• All data stored locally on your device
+• No data transmission to servers
+• Secure database encryption
+
+REQUIREMENTS:
+• Android 8.0+ (API 26+)
+• Bluetooth 4.0+ OBD2 adapter
+• OBD2-compatible vehicle (most cars from 1996+)
+
+Important: This app is for informational purposes. For serious issues, always consult a qualified mechanic.
