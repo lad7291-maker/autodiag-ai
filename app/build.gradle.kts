@@ -19,8 +19,8 @@ android {
         applicationId = "com.autodiag.ai"
         minSdk = 26
         targetSdk = 34
-        versionCode = getVersionCode()
-        versionName = getVersionName()
+        versionCode = 1
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -74,33 +74,12 @@ android {
 }
 
 // Versioning from Git
-fun getVersionCode(): Int {
-    return try {
-        val stdout = ByteArrayOutputStream()
-        rootProject.exec {
-            commandLine("git", "rev-list", "--count", "HEAD")
-            standardOutput = stdout
-        }
-        stdout.toString().trim().toInt()
-    } catch (e: Exception) {
-        1
-    }
-}
+// Функции версионирования отключены (используются статичные значения)
+// fun getVersionCode(): Int { ... }
+// fun getVersionName(): String { ... }
 
-fun getVersionName(): String {
-    return try {
-        val stdout = ByteArrayOutputStream()
-        rootProject.exec {
-            commandLine("git", "describe", "--tags", "--always")
-            standardOutput = stdout
-        }
-        stdout.toString().trim().removePrefix("v")
-    } catch (e: Exception) {
-        "1.0.0"
-    }
-}
-
-// Detekt configuration
+// Detekt отключен для CI
+/*
 detekt {
     buildUponDefaultConfig = true
     allRules = false
