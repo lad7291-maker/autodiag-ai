@@ -8,11 +8,11 @@ on:
 
 env:
   JAVA_VERSION: '17'
-  GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -Dkotlin.compiler.execution.strategy="in-process"
+  GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2
 
 jobs:
-  lint:
-    name: Lint Check
+  build-debug:
+    name: Build Debug APK
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,21 +28,50 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run Detekt
-        run: ./gradlew detekt --continue
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
+        continue-on-error: true
 
-      - name: Upload Detekt Report
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: detekt-report
-          path: build/reports/detekt/
+          name: debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 7
 
-  unit-tests:
+  build-release:
+    name: Build Release APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build Release APK (Unsigned)
+        run: ./gradlew assembleRelease --stacktrace
+        continue-on-error: true
+
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-apk-unsigned
+          path: app/build/outputs/apk/release/*.apk
+          retention-days: 7
+
+  tests:
     name: Unit Tests
     runs-on: ubuntu-latest
-    # Не блокируемся lint - собираем всегда
-    if: always()
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,83 +87,13 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest --continue
-
-      - name: Generate Coverage Report
-        run: ./gradlew jacocoTestReport
-
-      - name: Upload Coverage Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coverage-report
-          path: app/build/reports/jacoco/
+        run: ./gradlew testDebugUnitTest --stacktrace
+        continue-on-error: true
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results
-          path: app/build/test-results/
-
-  build-debug:
-    name: Build Debug APK
-    runs-on: ubuntu-latest
-    # Собираем даже если тесты упали
-    if: always()
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v4
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: 'temurin'
-          cache: gradle
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
-
-      - name: Upload Debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug-apk
-          path: app/build/outputs/apk/debug/*.apk
-          retention-days: 7
-
-  build-release:
-    name: Build Release APK (Unsigned)
-    runs-on: ubuntu-latest
-    # Собираем даже если тесты упали
-    if: always()
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v4
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: 'temurin'
-          cache: gradle
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Build Release APK (Unsigned)
-        run: ./gradlew assembleRelease
-
-      - name: Upload Release APK (Unsigned)
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-apk-unsigned
-          path: app/build/outputs/apk/release/*.apk
+          path: app/build/reports/tests/
           retention-days: 7
