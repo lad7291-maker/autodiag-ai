@@ -8,7 +8,6 @@ on:
 
 env:
   JAVA_VERSION: '17'
-  GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2
 
 jobs:
   build-debug:
@@ -25,6 +24,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
@@ -39,6 +41,7 @@ jobs:
           name: debug-apk
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 7
+          if-no-files-found: warn
 
   build-release:
     name: Build Release APK
@@ -54,6 +57,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
@@ -68,6 +74,7 @@ jobs:
           name: release-apk-unsigned
           path: app/build/outputs/apk/release/*.apk
           retention-days: 7
+          if-no-files-found: warn
 
   tests:
     name: Unit Tests
@@ -83,6 +90,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
@@ -97,3 +107,4 @@ jobs:
           name: test-results
           path: app/build/reports/tests/
           retention-days: 7
+          if-no-files-found: warn
