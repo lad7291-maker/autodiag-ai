@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.autodiag.ai.aiagent.SafeAdaptiveEngineAgent
+import com.autodiag.ai.aiagent.EngineParametersSnapshot
 import com.autodiag.ai.ui.theme.RussianAutoRed
 import com.autodiag.ai.ui.theme.RussianAutoDark
 import com.autodiag.ai.ui.theme.RussianAutoGray
@@ -193,7 +193,7 @@ private fun CollectingContent(
     progress: Float,
     kmCompleted: Float,
     kmTotal: Int,
-    parameters: SafeAdaptiveEngineAgent.EngineParametersSnapshot?,
+    parameters: EngineParametersSnapshot?
     onStop: () -> Unit
 ) {
     Spacer(modifier = Modifier.height(32.dp))

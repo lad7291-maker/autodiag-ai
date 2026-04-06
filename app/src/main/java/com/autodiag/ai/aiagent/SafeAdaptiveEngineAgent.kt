@@ -8,6 +8,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+// Re-export data model classes for easier access from UI layer
+typealias EngineParametersSnapshot = com.autodiag.ai.data.model.EngineParametersSnapshot
+typealias EngineProfile = com.autodiag.ai.data.model.EngineProfile
+
 /**
  * БЕЗОПАСНЫЙ адаптивный агент двигателя
  * 
@@ -592,9 +596,21 @@ class SafeAdaptiveEngineAgent(
         } else null
     }
 
-    // УДАЛЕНЫ ДУБЛИРУЮЩИЕСЯ МЕТОДЫ:
-    // - applyRecommendations() → используйте applyRecommendedSettings()
-    // - resetToFactorySettings() → используйте resetToFactory()
+    /**
+     * Apply recommendations (alias for applyRecommendedSettings)
+     * This method is called from AnalysisViewModel
+     */
+    fun applyRecommendations(recommendation: EngineTuneRecommendation?): Boolean {
+        return recommendation?.let { applyRecommendedSettings() } ?: false
+    }
+
+    /**
+     * Reset to factory settings (alias for resetToFactory)
+     * This method is called from AnalysisViewModel
+     */
+    fun resetToFactorySettings(): Boolean {
+        return resetToFactory()
+    }
 }
 
 /**

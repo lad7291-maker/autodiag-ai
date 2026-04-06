@@ -163,7 +163,8 @@ class ObdConnectionManager(private val context: Context) {
                 try {
                     val pressureCmd = IntakeManifoldPressureCommand()
                     pressureCmd.run(input, output)
-                    params = params.copy(intakeManifoldPressure = pressureCmd.pressure.toFloat())
+                    val pressureValue = pressureCmd.calculatedResult?.replace("[^0-9.-]".toRegex(), "")?.toFloatOrNull() ?: 0f
+                    params = params.copy(intakeManifoldPressure = pressureValue)
                 } catch (e: Exception) { }
                 
                 // Mass Air Flow

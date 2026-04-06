@@ -1,8 +1,6 @@
 package com.autodiag.ai.utils
 
 import android.util.Log
-import com.autodiag.ai.BuildConfig
-
 /**
  * Stub implementation for Firebase Analytics and Crashlytics logging.
  * Firebase is disabled for CI build - this class provides no-op implementations.
@@ -21,49 +19,49 @@ object FirebaseLogger {
      * Log screen view event (no-op)
      */
     fun logScreenView(screenName: String, screenClass: String? = null) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "Screen view: $screenName")
+        Log.d(TAG, "Screen view: $screenName")
     }
 
     /**
      * Log OBD2 connection event (no-op)
      */
     fun logObdConnection(deviceName: String?, success: Boolean) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "OBD connection: $deviceName, success=$success")
+        Log.d(TAG, "OBD connection: $deviceName, success=$success")
     }
 
     /**
      * Log diagnostic scan completion (no-op)
      */
     fun logDiagnosticScan(faultCount: Int, durationMs: Long) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "Diagnostic scan: $faultCount faults, ${durationMs}ms")
+        Log.d(TAG, "Diagnostic scan: $faultCount faults, ${durationMs}ms")
     }
 
     /**
      * Log AI analysis request (no-op)
      */
     fun logAiAnalysis(parametersCount: Int) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "AI analysis: $parametersCount parameters")
+        Log.d(TAG, "AI analysis: $parametersCount parameters")
     }
 
     /**
      * Log vehicle data update (no-op)
      */
     fun logVehicleDataUpdate(make: String?, model: String?) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "Vehicle data update: make=$make, model=$model")
+        Log.d(TAG, "Vehicle data update: make=$make, model=$model")
     }
 
     /**
      * Log export/share action (no-op)
      */
     fun logExport(exportType: String) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "Export: $exportType")
+        Log.d(TAG, "Export: $exportType")
     }
 
     /**
      * Log custom event (no-op)
      */
     fun logEvent(eventName: String, params: Map<String, String> = emptyMap()) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "Event: $eventName, params=$params")
+        Log.d(TAG, "Event: $eventName, params=$params")
     }
 
     // ==================== Crashlytics ====================
@@ -72,7 +70,7 @@ object FirebaseLogger {
      * Log non-fatal exception (no-op, logs to Logcat in debug)
      */
     fun logException(throwable: Throwable, message: String? = null) {
-        if (BuildConfig.DEBUG) Log.e(TAG, "Exception logged: $message", throwable)
+        Log.e(TAG, "Exception logged: $message", throwable)
     }
 
     /**
@@ -107,7 +105,7 @@ object FirebaseLogger {
      * Log message to Crashlytics (no-op, logs to Logcat in debug)
      */
     fun log(message: String) {
-        if (BuildConfig.DEBUG) Log.d(TAG, message)
+        Log.d(TAG, message)
     }
 
     /**

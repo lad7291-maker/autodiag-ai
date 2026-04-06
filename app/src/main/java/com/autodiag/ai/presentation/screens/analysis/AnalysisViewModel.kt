@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.autodiag.ai.aiagent.SafeAdaptiveEngineAgent
 import com.autodiag.ai.aiagent.DrivingAnalysis
-import com.autodiag.ai.data.model.EngineParametersSnapshot
+import com.autodiag.ai.aiagent.EngineParametersSnapshot
 import com.autodiag.ai.data.repository.AnalysisRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -16,7 +16,7 @@ sealed class AnalysisUiState {
         val progress: Float,
         val kmCompleted: Float,
         val kmTotal: Int,
-        val currentParameters: SafeAdaptiveEngineAgent.EngineParametersSnapshot?
+        val currentParameters: EngineParametersSnapshot?
     ) : AnalysisUiState()
     object Analyzing : AnalysisUiState()
     data class ResultsReady(val analysis: DrivingAnalysis) : AnalysisUiState()
@@ -112,7 +112,7 @@ class AnalysisViewModel(
             try {
                 val currentState = _uiState.value
                 if (currentState is AnalysisUiState.ResultsReady) {
-                    engineAgent.applyRecommendations(currentState.analysis.recommendations)
+                    currentState.analysis.recommendations?.let { engineAgent.applyRecommendations(it) }
                     analysisRepository.markAsApplied(currentState.analysis)
                 }
             } catch (e: Exception) {

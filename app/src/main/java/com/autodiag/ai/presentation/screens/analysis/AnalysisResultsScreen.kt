@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.autodiag.ai.aiagent.DrivingAnalysis
 import com.autodiag.ai.aiagent.DrivingStyle
 import com.autodiag.ai.aiagent.SafeAdaptiveEngineAgent
-import com.autodiag.ai.data.model.EngineProfile
+import com.autodiag.ai.aiagent.EngineProfile
 import com.autodiag.ai.ui.theme.RussianAutoRed
 import com.autodiag.ai.ui.theme.RussianAutoDark
 import com.autodiag.ai.ui.theme.RussianAutoGray
@@ -202,7 +202,7 @@ private fun DrivingStyleCard(style: DrivingStyle) {
 }
 
 @Composable
-private fun EngineProfileCard(profile: DrivingAnalysis.EngineProfile) {
+private fun EngineProfileCard(profile: EngineProfile) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
