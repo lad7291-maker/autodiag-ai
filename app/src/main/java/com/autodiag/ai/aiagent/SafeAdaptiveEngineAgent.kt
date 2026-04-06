@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 // Re-export data model classes for easier access from UI layer
 typealias EngineParametersSnapshot = com.autodiag.ai.data.model.EngineParametersSnapshot
 typealias EngineProfile = com.autodiag.ai.data.model.EngineProfile
+// EngineTuneRecommendation is defined at the bottom of this file
 
 /**
  * БЕЗОПАСНЫЙ адаптивный агент двигателя
@@ -660,27 +661,7 @@ enum class DriverProfile {
     BALANCED        // Сбалансированный
 }
 
-/**
- * Рекомендация по настройке двигателя
- */
-data class EngineTuneRecommendation(
-    val profile: DriverProfile,
-    val description: String,
-    val ignitionTimingOffset: Float,    // Коррекция УОЗ (±2°)
-    val fuelMixtureBias: Float,         // Смещение смеси (±5%)
-    val reasoning: List<String>,        // Обоснование
-    val safetyNotes: List<String>       // Примечания по безопасности
-)
-
-/**
- * Голосовое предупреждение
- */
-data class VoiceAlert(
-    val priority: AlertPriority,
-    val message: String,
-    val type: AlertType,
-    val timestamp: Long = System.currentTimeMillis()
-)
+// EngineTuneRecommendation and VoiceAlert are now in separate files
 
 enum class AlertPriority {
     INFO,       // Информация
