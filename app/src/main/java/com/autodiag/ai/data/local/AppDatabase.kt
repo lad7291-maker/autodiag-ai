@@ -6,16 +6,12 @@ import androidx.room.TypeConverters
 
 @Database(
     entities = [
-        FaultCodeEntity::class,
-        SensorDataEntity::class,
         AnalysisEntity::class
     ],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun faultCodeDao(): FaultCodeDao
-    abstract fun sensorDataDao(): SensorDataDao
     abstract fun analysisDao(): AnalysisDao
 }
