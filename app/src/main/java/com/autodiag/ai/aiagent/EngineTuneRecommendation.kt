@@ -1,5 +1,7 @@
 package com.autodiag.ai.aiagent
 
+// Note: DriverProfile is defined in SafeAdaptiveEngineAgent.kt
+
 /**
  * Рекомендация по настройке двигателя
  */
