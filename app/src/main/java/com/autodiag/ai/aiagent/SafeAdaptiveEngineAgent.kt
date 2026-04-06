@@ -8,6 +8,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+// Import types from same package (explicit for compilation order)
+import com.autodiag.ai.aiagent.EngineTuneRecommendation
+import com.autodiag.ai.aiagent.DriverProfile
+
 // Re-export data model classes for easier access from UI layer
 typealias EngineParametersSnapshot = com.autodiag.ai.data.model.EngineParametersSnapshot
 typealias EngineProfile = com.autodiag.ai.data.model.EngineProfile
