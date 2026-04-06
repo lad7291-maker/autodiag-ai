@@ -24,11 +24,9 @@
         android:strokeWidth="2"
         android:pathData="M44,52 L54,62 L64,52" />
     <!-- AI indicator -->
-    <circle
+    <path
         android:fillColor="#4CAF50"
-        android:cx="72"
-        android:cy="32"
-        android:r="8" />
+        android:pathData="M72,24 A8,8 0 1,0 72,40 A8,8 0 1,0 72,24 Z" />
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M68,32 L72,28 L76,32 L74,32 L74,36 L70,36 L70,32 Z" />
