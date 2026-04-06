@@ -193,7 +193,7 @@ private fun CollectingContent(
     progress: Float,
     kmCompleted: Float,
     kmTotal: Int,
-    parameters: EngineParametersSnapshot?
+    parameters: EngineParametersSnapshot?,
     onStop: () -> Unit
 ) {
     Spacer(modifier = Modifier.height(32.dp))
