@@ -9,8 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 // Import types from same package (explicit for compilation order)
-import com.autodiag.ai.aiagent.EngineTuneRecommendation
-import com.autodiag.ai.aiagent.DriverProfile
+
 
 // Re-export data model classes for easier access from UI layer
 typealias EngineParametersSnapshot = com.autodiag.ai.data.model.EngineParametersSnapshot
@@ -628,6 +627,40 @@ enum class DrivingStyle {
 }
 
 /**
+ * Профиль водителя
+ */
+enum class DriverProfile {
+    UNKNOWN,        // Не определен
+    ECONOMICAL,     // Спокойный, экономит
+    DYNAMIC,        // Агрессивный, динамичный
+    HIGHWAY,        // Трасса
+    URBAN,          // Город
+    BALANCED        // Сбалансированный
+}
+
+/**
+ * Рекомендация по настройке двигателя
+ */
+data class EngineTuneRecommendation(
+    val profile: DriverProfile,
+    val description: String,
+    val ignitionTimingOffset: Float,    // Коррекция УОЗ (±2°)
+    val fuelMixtureBias: Float,         // Смещение смеси (±5%)
+    val reasoning: List<String>,        // Обоснование
+    val safetyNotes: List<String>       // Примечания по безопасности
+)
+
+/**
+ * Голосовое предупреждение
+ */
+data class VoiceAlert(
+    val priority: AlertPriority,
+    val message: String,
+    val type: AlertType,
+    val timestamp: Long = System.currentTimeMillis()
+)
+
+/**
  * Анализ вождения
  */
 data class DrivingAnalysis(
@@ -651,8 +684,6 @@ enum class AnalysisStatus {
     INSUFFICIENT_DATA,  // Недостаточно данных
     COMPLETED           // Анализ завершен
 }
-
-// EngineTuneRecommendation, VoiceAlert, DriverProfile are now in separate files
 
 enum class AlertPriority {
     INFO,       // Информация
