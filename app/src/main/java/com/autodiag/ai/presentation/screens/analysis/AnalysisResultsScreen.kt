@@ -277,7 +277,7 @@ private fun ProfileBar(
 }
 
 @Composable
-private fun RecommendationsCard(recommendations: SafeAdaptiveEngineAgent.EngineTuneRecommendation) {
+private fun RecommendationsCard(recommendations: EngineTuneRecommendation) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
