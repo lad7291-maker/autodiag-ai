@@ -21,6 +21,7 @@ import com.autodiag.ai.aiagent.DrivingAnalysis
 import com.autodiag.ai.aiagent.DrivingStyle
 import com.autodiag.ai.aiagent.SafeAdaptiveEngineAgent
 import com.autodiag.ai.aiagent.EngineProfile
+import com.autodiag.ai.aiagent.EngineTuneRecommendation
 import com.autodiag.ai.ui.theme.RussianAutoRed
 import com.autodiag.ai.ui.theme.RussianAutoDark
 import com.autodiag.ai.ui.theme.RussianAutoGray
