@@ -161,25 +161,30 @@ private fun IdleStateContent(
         }
     }
     
-    Spacer(modifier = Modifier.weight(1f))
-    
-    Button(
-        onClick = onStartCollection,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = RussianAutoRed
-        ),
-        shape = RoundedCornerShape(12.dp)
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(Icons.Default.PlayArrow, null)
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            "Начать сбор данных",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Medium
-        )
+        Spacer(modifier = Modifier.weight(1f))
+        
+        Button(
+            onClick = onStartCollection,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = RussianAutoRed
+            ),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Icon(Icons.Default.PlayArrow, null)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                "Начать сбор данных",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
     }
 }
 
@@ -272,107 +277,122 @@ private fun CollectingContent(
         }
     }
     
-    Spacer(modifier = Modifier.weight(1f))
-    
-    OutlinedButton(
-        onClick = onStop,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp),
-        colors = ButtonDefaults.outlinedButtonColors(
-            contentColor = RussianAutoRed
-        ),
-        shape = RoundedCornerShape(12.dp)
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(Icons.Default.Stop, null)
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            "Остановить и проанализировать",
-            fontSize = 16.sp
-        )
+        Spacer(modifier = Modifier.weight(1f))
+        
+        OutlinedButton(
+            onClick = onStop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = RussianAutoRed
+            ),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Icon(Icons.Default.Stop, null)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                "Остановить и проанализировать",
+                fontSize = 16.sp
+            )
+        }
     }
 }
 
 @Composable
 private fun AnalyzingContent() {
-    Spacer(modifier = Modifier.weight(1f))
-    
-    CircularProgressIndicator(
-        modifier = Modifier.size(100.dp),
-        color = RussianAutoRed,
-        strokeWidth = 8.dp
-    )
-    
-    Spacer(modifier = Modifier.height(32.dp))
-    
-    Text(
-        text = "Анализ данных...",
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        color = RussianAutoDark
-    )
-    
-    Spacer(modifier = Modifier.height(16.dp))
-    
-    Text(
-        text = "Нейросеть анализирует стиль вождения\nи формирует рекомендации",
-        fontSize = 16.sp,
-        color = RussianAutoDark.copy(alpha = 0.7f),
-        textAlign = TextAlign.Center
-    )
-    
-    Spacer(modifier = Modifier.weight(1f))
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.weight(1f))
+        
+        CircularProgressIndicator(
+            modifier = Modifier.size(100.dp),
+            color = RussianAutoRed,
+            strokeWidth = 8.dp
+        )
+        
+        Spacer(modifier = Modifier.height(32.dp))
+        
+        Text(
+            text = "Анализ данных...",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = RussianAutoDark
+        )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Text(
+            text = "Нейросеть анализирует стиль вождения\nи формирует рекомендации",
+            fontSize = 16.sp,
+            color = RussianAutoDark.copy(alpha = 0.7f),
+            textAlign = TextAlign.Center
+        )
+        
+        Spacer(modifier = Modifier.weight(1f))
+    }
 }
 
 @Composable
 private fun ResultsReadyContent(
     onViewResults: () -> Unit
 ) {
-    Spacer(modifier = Modifier.weight(1f))
-    
-    Icon(
-        imageVector = Icons.Default.CheckCircle,
-        contentDescription = null,
-        modifier = Modifier.size(120.dp),
-        tint = Color(0xFF4CAF50)
-    )
-    
-    Spacer(modifier = Modifier.height(24.dp))
-    
-    Text(
-        text = "Анализ завершён!",
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        color = RussianAutoDark
-    )
-    
-    Spacer(modifier = Modifier.height(16.dp))
-    
-    Text(
-        text = "Рекомендации готовы к просмотру",
-        fontSize = 16.sp,
-        color = RussianAutoDark.copy(alpha = 0.7f)
-    )
-    
-    Spacer(modifier = Modifier.weight(1f))
-    
-    Button(
-        onClick = onViewResults,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = RussianAutoRed
-        ),
-        shape = RoundedCornerShape(12.dp)
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(Icons.Default.Visibility, null)
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            "Посмотреть результаты",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Medium
+        Spacer(modifier = Modifier.weight(1f))
+        
+        Icon(
+            imageVector = Icons.Default.CheckCircle,
+            contentDescription = null,
+            modifier = Modifier.size(120.dp),
+            tint = Color(0xFF4CAF50)
         )
+        
+        Spacer(modifier = Modifier.height(24.dp))
+        
+        Text(
+            text = "Анализ завершён!",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = RussianAutoDark
+        )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Text(
+            text = "Рекомендации готовы к просмотру",
+            fontSize = 16.sp,
+            color = RussianAutoDark.copy(alpha = 0.7f)
+        )
+        
+        Spacer(modifier = Modifier.weight(1f))
+        
+        Button(
+            onClick = onViewResults,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = RussianAutoRed
+            ),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Icon(Icons.Default.Visibility, null)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                "Посмотреть результаты",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
     }
 }
 
@@ -381,51 +401,56 @@ private fun ErrorContent(
     message: String,
     onRetry: () -> Unit
 ) {
-    Spacer(modifier = Modifier.weight(1f))
-    
-    Icon(
-        imageVector = Icons.Default.Error,
-        contentDescription = null,
-        modifier = Modifier.size(100.dp),
-        tint = RussianAutoRed
-    )
-    
-    Spacer(modifier = Modifier.height(24.dp))
-    
-    Text(
-        text = "Ошибка",
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        color = RussianAutoDark
-    )
-    
-    Spacer(modifier = Modifier.height(16.dp))
-    
-    Text(
-        text = message,
-        fontSize = 16.sp,
-        color = RussianAutoDark.copy(alpha = 0.7f),
-        textAlign = TextAlign.Center
-    )
-    
-    Spacer(modifier = Modifier.weight(1f))
-    
-    Button(
-        onClick = onRetry,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = RussianAutoRed
-        ),
-        shape = RoundedCornerShape(12.dp)
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(Icons.Default.Refresh, null)
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            "Попробовать снова",
-            fontSize = 18.sp
+        Spacer(modifier = Modifier.weight(1f))
+        
+        Icon(
+            imageVector = Icons.Default.Error,
+            contentDescription = null,
+            modifier = Modifier.size(100.dp),
+            tint = RussianAutoRed
         )
+        
+        Spacer(modifier = Modifier.height(24.dp))
+        
+        Text(
+            text = "Ошибка",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = RussianAutoDark
+        )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        Text(
+            text = message,
+            fontSize = 16.sp,
+            color = RussianAutoDark.copy(alpha = 0.7f),
+            textAlign = TextAlign.Center
+        )
+        
+        Spacer(modifier = Modifier.weight(1f))
+        
+        Button(
+            onClick = onRetry,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = RussianAutoRed
+            ),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Icon(Icons.Default.Refresh, null)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                "Попробовать снова",
+                fontSize = 18.sp
+            )
+        }
     }
 }
 

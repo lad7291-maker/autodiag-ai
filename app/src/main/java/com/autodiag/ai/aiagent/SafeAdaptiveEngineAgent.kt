@@ -1,6 +1,8 @@
 package com.autodiag.ai.aiagent
 
 import com.autodiag.ai.data.model.EngineParameters
+import com.autodiag.ai.data.model.EngineParametersSnapshot
+import com.autodiag.ai.data.model.EngineProfile
 import com.autodiag.ai.services.ObdConnectionManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -317,6 +319,7 @@ class SafeAdaptiveEngineAgent(
                         type = AlertType.TEMPERATURE
                     ))
                 }
+                else -> {}
             }
         }
         
@@ -348,6 +351,7 @@ class SafeAdaptiveEngineAgent(
                         type = AlertType.FUEL_MIXTURE
                     ))
                 }
+                else -> {}
             }
         }
         
@@ -604,16 +608,6 @@ enum class DrivingStyle {
 }
 
 /**
- * Профиль двигателя для UI
- */
-data class EngineProfile(
-    val avgRpm: Float,
-    val avgLoad: Float,
-    val avgTemp: Float,
-    val avgConsumption: Float
-)
-
-/**
  * Анализ вождения
  */
 data class DrivingAnalysis(
@@ -684,17 +678,6 @@ enum class AlertType {
     FUEL_MIXTURE,
     OIL_PRESSURE
 }
-
-/**
- * Снимок параметров двигателя для UI
- */
-data class EngineParametersSnapshot(
-    val rpm: Float,
-    val engineLoad: Float,
-    val coolantTemp: Float,
-    val speed: Float,
-    val throttlePosition: Float
-)
 
 /**
  * Образец вождения

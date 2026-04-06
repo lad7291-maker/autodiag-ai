@@ -2,6 +2,7 @@ package com.autodiag.ai.ui.screens.bluetooth
 
 import android.Manifest
 import android.bluetooth.BluetoothDevice
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -139,7 +140,7 @@ fun BluetoothScreen(
             item {
                 ConnectionStatusCard(
                     isConnected = isConnected,
-                    deviceName = viewModel.connectedDeviceName
+                    deviceName = viewModel.connectedDeviceName.collectAsState().value
                 )
             }
             

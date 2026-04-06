@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.autodiag.ai.aiagent.SafeAdaptiveEngineAgent
 import com.autodiag.ai.aiagent.DrivingAnalysis
+import com.autodiag.ai.data.model.EngineParametersSnapshot
 import com.autodiag.ai.data.repository.AnalysisRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

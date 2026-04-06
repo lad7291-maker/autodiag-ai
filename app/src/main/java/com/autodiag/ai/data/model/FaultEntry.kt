@@ -83,19 +83,3 @@ data class PriceRange(
     val max: Int,
     val currency: String = "RUB"
 )
-
-enum class VehicleBrand {
-    VAZ,        // ВАЗ/Лада
-    UAZ,        // УАЗ
-    GAZ,        // ГАЗ
-    KAMAZ,      // КамАЗ
-    PAZ,        // ПАЗ
-    OTHER       // Другие
-}
-
-enum class RepairDifficulty {
-    EASY,       // Легко - можно самому
-    MEDIUM,     // Средне - нужны инструменты
-    HARD,       // Сложно - лучше к мастеру
-    EXPERT      // Эксперт - только СТО
-}

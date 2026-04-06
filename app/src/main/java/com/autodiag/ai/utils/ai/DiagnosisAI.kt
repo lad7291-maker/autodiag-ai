@@ -132,6 +132,7 @@ class DiagnosisAI(private val context: Context) {
                     )
                     healthScore -= 5f
                 }
+                else -> {}
             }
         }
         

@@ -52,6 +52,7 @@ class AnalysisUseCase(
                     issues.add("Двигатель не прогрет: ${temp}°C")
                     recommendations.add("Дайте двигателю прогреться до рабочей температуры")
                 }
+                else -> {}
             }
         }
         
@@ -66,6 +67,7 @@ class AnalysisUseCase(
                     issues.add("Нестабильный холостой ход: $rpm RPM")
                     recommendations.add("Проверьте дроссельную заслонку и датчик холостого хода")
                 }
+                else -> {}
             }
         }
         
@@ -80,6 +82,7 @@ class AnalysisUseCase(
                     issues.add("Отклонение топливной смеси: ${trim}%")
                     recommendations.add("Проверьте лямбда-зонд и воздушный фильтр")
                 }
+                else -> {}
             }
         }
         

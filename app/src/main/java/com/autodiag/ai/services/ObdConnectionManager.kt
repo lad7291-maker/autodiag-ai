@@ -135,7 +135,7 @@ class ObdConnectionManager(private val context: Context) {
                 try {
                     val tempCmd = EngineCoolantTemperatureCommand()
                     tempCmd.run(input, output)
-                    params = params.copy(coolantTemperature = tempCmd.temperature.floatValue())
+                    params = params.copy(coolantTemperature = tempCmd.temperature.toFloat())
                 } catch (e: Exception) { }
                 
                 // Throttle Position
@@ -156,21 +156,21 @@ class ObdConnectionManager(private val context: Context) {
                 try {
                     val intakeTempCmd = AirIntakeTemperatureCommand()
                     intakeTempCmd.run(input, output)
-                    params = params.copy(intakeAirTemperature = intakeTempCmd.temperature.floatValue())
+                    params = params.copy(intakeAirTemperature = intakeTempCmd.temperature.toFloat())
                 } catch (e: Exception) { }
                 
                 // Intake Pressure
                 try {
                     val pressureCmd = IntakeManifoldPressureCommand()
                     pressureCmd.run(input, output)
-                    params = params.copy(intakeManifoldPressure = pressureCmd.metricPressure)
+                    params = params.copy(intakeManifoldPressure = pressureCmd.pressure.toFloat())
                 } catch (e: Exception) { }
                 
                 // Mass Air Flow
                 try {
                     val mafCmd = MassAirFlowCommand()
                     mafCmd.run(input, output)
-                    params = params.copy(massAirFlow = mafCmd.maf)
+                    params = params.copy(massAirFlow = mafCmd.maf.toFloat())
                 } catch (e: Exception) { }
                 
                 // Fuel Level
@@ -211,7 +211,7 @@ class ObdConnectionManager(private val context: Context) {
                 val input = socket.inputStream
                 val output = socket.outputStream
                 
-                val clearCmd = com.github.pires.obd.commands.control.ResetTroubleCodesCommand()
+                val clearCmd = ResetTroubleCodesCommand()
                 clearCmd.run(input, output)
                 Result.success(Unit)
             } ?: Result.failure(IOException("Not connected"))

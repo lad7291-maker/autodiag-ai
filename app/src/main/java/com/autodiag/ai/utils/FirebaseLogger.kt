@@ -1,171 +1,127 @@
 package com.autodiag.ai.utils
 
 import android.util.Log
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.analytics.ktx.logEvent
-import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.google.firebase.crashlytics.ktx.crashlytics
-import com.google.firebase.ktx.Firebase
 import com.autodiag.ai.BuildConfig
 
 /**
- * Utility class for Firebase Analytics and Crashlytics logging.
- * Automatically disables logging in debug builds.
+ * Stub implementation for Firebase Analytics and Crashlytics logging.
+ * Firebase is disabled for CI build - this class provides no-op implementations.
  */
 object FirebaseLogger {
 
     private const val TAG = "FirebaseLogger"
-    private val analytics: FirebaseAnalytics? by lazy {
-        if (BuildConfig.DEBUG) null else Firebase.analytics
-    }
-    private val crashlytics: FirebaseCrashlytics? by lazy {
-        if (BuildConfig.DEBUG) null else Firebase.crashlytics
-    }
 
     init {
-        if (BuildConfig.DEBUG) {
-            Log.d(TAG, "Firebase logging disabled in debug build")
-        }
+        Log.d(TAG, "Firebase logging disabled (stub implementation)")
     }
 
     // ==================== Analytics Events ====================
 
     /**
-     * Log screen view event
+     * Log screen view event (no-op)
      */
     fun logScreenView(screenName: String, screenClass: String? = null) {
-        analytics?.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
-            param(FirebaseAnalytics.Param.SCREEN_NAME, screenName)
-            screenClass?.let { param(FirebaseAnalytics.Param.SCREEN_CLASS, it) }
-        }
         if (BuildConfig.DEBUG) Log.d(TAG, "Screen view: $screenName")
     }
 
     /**
-     * Log OBD2 connection event
+     * Log OBD2 connection event (no-op)
      */
     fun logObdConnection(deviceName: String?, success: Boolean) {
-        analytics?.logEvent("obd_connection") {
-            param("device_name", deviceName ?: "unknown")
-            param("success", success.toString())
-        }
         if (BuildConfig.DEBUG) Log.d(TAG, "OBD connection: $deviceName, success=$success")
     }
 
     /**
-     * Log diagnostic scan completion
+     * Log diagnostic scan completion (no-op)
      */
     fun logDiagnosticScan(faultCount: Int, durationMs: Long) {
-        analytics?.logEvent("diagnostic_scan") {
-            param("fault_count", faultCount.toLong())
-            param("duration_ms", durationMs)
-        }
         if (BuildConfig.DEBUG) Log.d(TAG, "Diagnostic scan: $faultCount faults, ${durationMs}ms")
     }
 
     /**
-     * Log AI analysis request
+     * Log AI analysis request (no-op)
      */
     fun logAiAnalysis(parametersCount: Int) {
-        analytics?.logEvent("ai_analysis") {
-            param("parameters_count", parametersCount.toLong())
-        }
         if (BuildConfig.DEBUG) Log.d(TAG, "AI analysis: $parametersCount parameters")
     }
 
     /**
-     * Log vehicle data update
+     * Log vehicle data update (no-op)
      */
     fun logVehicleDataUpdate(make: String?, model: String?) {
-        analytics?.logEvent("vehicle_data_update") {
-            param("make", make ?: "unknown")
-            param("model", model ?: "unknown")
-        }
+        if (BuildConfig.DEBUG) Log.d(TAG, "Vehicle data update: make=$make, model=$model")
     }
 
     /**
-     * Log export/share action
+     * Log export/share action (no-op)
      */
     fun logExport(exportType: String) {
-        analytics?.logEvent("export_data") {
-            param("type", exportType)
-        }
         if (BuildConfig.DEBUG) Log.d(TAG, "Export: $exportType")
     }
 
     /**
-     * Log custom event
+     * Log custom event (no-op)
      */
     fun logEvent(eventName: String, params: Map<String, String> = emptyMap()) {
-        analytics?.logEvent(eventName) {
-            params.forEach { (key, value) ->
-                param(key, value)
-            }
-        }
         if (BuildConfig.DEBUG) Log.d(TAG, "Event: $eventName, params=$params")
     }
 
     // ==================== Crashlytics ====================
 
     /**
-     * Log non-fatal exception
+     * Log non-fatal exception (no-op, logs to Logcat in debug)
      */
     fun logException(throwable: Throwable, message: String? = null) {
-        message?.let { crashlytics?.log(it) }
-        crashlytics?.recordException(throwable)
         if (BuildConfig.DEBUG) Log.e(TAG, "Exception logged: $message", throwable)
     }
 
     /**
-     * Set user identifier
+     * Set user identifier (no-op)
      */
     fun setUserId(userId: String) {
-        crashlytics?.setUserId(userId)
-        analytics?.setUserId(userId)
+        // No-op
     }
 
     /**
-     * Set custom key for crash reports
+     * Set custom key for crash reports (no-op)
      */
     fun setCustomKey(key: String, value: String) {
-        crashlytics?.setCustomKey(key, value)
+        // No-op
     }
 
     /**
-     * Set custom key for crash reports (boolean)
+     * Set custom key for crash reports (no-op)
      */
     fun setCustomKey(key: String, value: Boolean) {
-        crashlytics?.setCustomKey(key, value)
+        // No-op
     }
 
     /**
-     * Set custom key for crash reports (int)
+     * Set custom key for crash reports (no-op)
      */
     fun setCustomKey(key: String, value: Int) {
-        crashlytics?.setCustomKey(key, value)
+        // No-op
     }
 
     /**
-     * Log message to Crashlytics
+     * Log message to Crashlytics (no-op, logs to Logcat in debug)
      */
     fun log(message: String) {
-        crashlytics?.log(message)
         if (BuildConfig.DEBUG) Log.d(TAG, message)
     }
 
     /**
-     * Force crash (for testing only)
+     * Force crash (no-op)
      */
     fun forceCrash() {
-        crashlytics?.crash()
+        // No-op
     }
 
     /**
-     * Check if Firebase services are available
+     * Check if Firebase services are available (always returns false in stub)
      */
     fun isAvailable(): Boolean {
-        return analytics != null && crashlytics != null
+        return false
     }
 }
 

@@ -2,6 +2,8 @@ package com.autodiag.ai.aiagent
 
 import com.autodiag.ai.data.model.DiagnosisHistory
 import com.autodiag.ai.data.model.EngineParameters
+import com.autodiag.ai.data.model.FailurePrediction
+import com.autodiag.ai.data.model.Urgency
 import com.autodiag.ai.data.model.Vehicle
 import com.autodiag.ai.data.repository.DiagnosisRepository
 
